@@ -22,9 +22,9 @@ To install and use these dotfiles, follow these steps:
     cd dotfiles
     ```
 
-3. Create symlinks:
+3. Run the installation script:
     ```
-    ln -s ~/dotfiles/.vimrc ~/.vimrc
+    ./install.sh
     ```
 
 ## Usage
