@@ -12,6 +12,7 @@ filetype on
 filetype plugin on
 filetype indent on
 set encoding=utf8
+set guicursor=n:block,i:ver25
 
 "Mappings
 inoremap jj <esc>
@@ -21,16 +22,18 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Toggle terminal with Ctrl-`
 function! ToggleTerminal()
-  below term ++rows=10 
+  below term ++rows=10
 endfunction
 
-nnoremap <C-t> :call ToggleTerminal()<CR>  
-	
+nnoremap <C-t> :call ToggleTerminal()<CR>
 
 "Theme
 colorscheme catppuccin_macchiato
 let g:airline_powerline_fonts = 1
 
-"Escape sequence fix
-set t_RV=
-set term=builtin_ansi
+"Fix for cursor in Konsole terminal
+if &term =~ 'xterm\|konsole'
+    let &t_SI = "\e[5 q"  " blinking bar in insert mode
+    let &t_EI = "\e[2 q"  " block cursor in normal mode
+endif
+

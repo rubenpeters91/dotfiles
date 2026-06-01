@@ -9,6 +9,15 @@ fi
 # Create symlink to .vimrc file in this repo
 ln -s "$(pwd)/.vimrc" ~/.vimrc
 
+# Check if nvim config in .config exists
+if [ -f ~/.config/nvim ]; then
+    mv ~/.config/nvim ~/.config/nvim_backup
+    echo "Moved old nvim config to nvim_backup"
+fi
+
+# Create a symlink to .config/nvim dir in this repo
+ln -s "$(pwd)/nvim" ~/.config/nvim
+
 # Same for starship.toml which is located in .config
 if [ -f ~/.config/starship.toml ]; then
     mv ~/.config/starship.toml ~/.config/starship.toml.backup
